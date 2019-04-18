@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Thoralf-M/bridge.ixi-js/issues"
   },
-  "homepage": "https://github.com/Thoralf-M/bridge.ixi-js#readme"
+  "homepage": "https://github.com/Thoralf-M/bridge.ixi-js#readme",
+  "dependencies": {
+    "net": "^1.0.2",
+    "protobufjs": "^6.8.8"
+  }
 }
