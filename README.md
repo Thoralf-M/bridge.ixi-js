@@ -3,6 +3,6 @@
 Requires
 https://github.com/iotaledger/bridge.ixi
 
-`npm i`
+`npm i` or `yarn`
 
 `node bridge.ixi-js.js`
