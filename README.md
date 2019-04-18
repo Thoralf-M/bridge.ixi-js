@@ -1,10 +1,8 @@
 # bridge.ixi-js
 
-Requires 
+Requires
 https://github.com/iotaledger/bridge.ixi
 
-`npm i protobufjs`
-
-`npm i net`
+`npm i` or `yarn`
 
 `node bridge.ixi-js.js`
