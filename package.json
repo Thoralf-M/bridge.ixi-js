@@ -1,0 +1,19 @@
+{
+  "name": "bridge.ixi",
+  "version": "1.0.0",
+  "description": "Requires  https://github.com/iotaledger/bridge.ixi",
+  "main": "bridge.ixi-js.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thoralf-M/bridge.ixi-js.git"
+  },
+  "author": "Thoralf-M",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Thoralf-M/bridge.ixi-js/issues"
+  },
+  "homepage": "https://github.com/Thoralf-M/bridge.ixi-js#readme"
+}
