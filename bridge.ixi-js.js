@@ -52,10 +52,11 @@ socket.on('data', async (data) => {
     const root = await protobuf.load("protos/wrapper.proto");
     let WrapperMessage = root.lookupType("WrapperMessage");
 
-    let message = WrapperMessage.decode(responsebuffer).toJSON()
-    //convert value to readable number
+    let message = WrapperMessage.decode(responsebuffer)
+    //convert value and timestamp
     let result = message.findTransactionsByAddressResponse.transaction.map(tx => {
-      tx.value = parseInt(base64_decode(tx.value))
+      tx.value = parseInt(tx.value.toString('hex'), 16)
+      tx.issuanceTimestamp = JSON.parse(tx.issuanceTimestamp)
       return tx
     })
     console.log(result);
@@ -88,28 +89,4 @@ function toBytesInt32(num) {
   view = new DataView(arr);
   view.setUint32(0, num, false); // byteOffset = 0; litteEndian = false
   return arr;
-}
-
-function base64_decode(base64String) {
-  var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-  var h1, h2, h3, h4, o1, o2, o3, bits, i = 0, bytes = [];
-
-  do {
-    h1 = b64.indexOf(base64String.charAt(i++));
-    h2 = b64.indexOf(base64String.charAt(i++));
-    h3 = b64.indexOf(base64String.charAt(i++));
-    h4 = b64.indexOf(base64String.charAt(i++));
-
-    bits = h1 << 18 | h2 << 12 | h3 << 6 | h4;
-
-    o1 = bits >> 16 & 0xff;
-    o2 = bits >> 8 & 0xff;
-    o3 = bits & 0xff;
-
-    bytes.push(o1);
-    bytes.push(o2);
-    bytes.push(o3);
-  } while (i < base64String.length);
-
-  return bytes;
 }
