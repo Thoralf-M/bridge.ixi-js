@@ -14,7 +14,9 @@ socket.on('connect', async () => {
         transactionBuilder: {
           address: "TEST9ADDRESS999999999999999999999999999999999999999999999999999999999999999999999",
           value: Buffer.from(toBytesInt32(0)),
-          tag: "BRIDGE9TEST9JS9999999999999"
+          tag: "BRIDGE9TEST9JS9999999999999",
+          isBundleHead: true,
+          isBundleTail: true
         }
       }
     }
@@ -57,6 +59,7 @@ socket.on('data', async (data) => {
     let result = message.findTransactionsByAddressResponse.transaction.map(tx => {
       tx.value = parseInt(tx.value.toString('hex'), 16)
       tx.issuanceTimestamp = JSON.parse(tx.issuanceTimestamp)
+      tx.attachmentTimestamp = JSON.parse(tx.attachmentTimestamp)
       return tx
     })
     console.log(result);
